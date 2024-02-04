@@ -9,7 +9,7 @@ terraform {
     organization = "BS_INC"
 
     workspaces {
-      name = "TestAppPlanImage"
+      name = "TestingAppServicePlanDockerImage-Infrastructure"
     }
   }
 }
@@ -35,4 +35,12 @@ resource "azurerm_app_service_plan" "plan" {
     tier = "Basic"
     size = "B1"
   }
+}
+
+resource "azurerm_container_registry" "acr" {
+  name                = "bs-appplantest"
+  resource_group_name = local.resource_group_name
+  location            = local.location
+  sku                 = "Basic"
+  admin_enabled       = true
 }
