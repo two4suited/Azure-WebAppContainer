@@ -32,8 +32,8 @@ resource "azurerm_app_service_plan" "plan" {
   resource_group_name = local.resource_group_name
   kind                = "Linux"
   sku {
-    tier = "Basic"
-    size = "B1"
+    tier = "Free"
+    size = "F1"
   }
 }
 
