@@ -4,6 +4,16 @@ provider "azurerm" {
   }
 }
 
+terraform {
+  cloud {
+    organization = "BS_INC"
+
+    workspaces {
+      name = "TestAppPlanImage"
+    }
+  }
+}
+
 locals {
   location = "westus2"
   resource_group_name = "rg-webappcontainer"
