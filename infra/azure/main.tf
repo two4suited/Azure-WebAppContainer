@@ -30,7 +30,7 @@ resource "azurerm_service_plan" "plan" {
   location            = local.location
   name                = local.app_service_plan_name
   resource_group_name = local.resource_group_name
-  os_type                 = "linux"
+  os_type                 = "Linux"
   sku_name = "Y1"
 }
 
