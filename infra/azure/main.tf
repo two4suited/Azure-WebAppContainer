@@ -38,7 +38,7 @@ resource "azurerm_app_service_plan" "plan" {
 }
 
 resource "azurerm_container_registry" "acr" {
-  name                = "bs-appplantest"
+  name                = "bswebappcontainer"
   resource_group_name = local.resource_group_name
   location            = local.location
   sku                 = "Basic"
