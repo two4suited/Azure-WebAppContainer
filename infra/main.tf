@@ -1,4 +1,8 @@
-provider "azurerm" {}
+provider "azurerm" {
+  features {
+    
+  }
+}
 
 locals {
   location = "westus2"
