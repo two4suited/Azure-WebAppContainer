@@ -81,7 +81,7 @@ jobs:
   app_infrastructure:
             name: 'Build App Infrastructure'
             runs-on: ubuntu-latest
-            needs: app_infrastructure
+            needs: infrastructure
             environment: production
         
             # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
