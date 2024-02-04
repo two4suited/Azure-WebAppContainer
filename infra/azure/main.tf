@@ -26,18 +26,16 @@ resource "azurerm_resource_group" "rg" {
   location = local.location
 }
 
-resource "azurerm_app_service_plan" "plan" {
+resource "azurerm_service_plan" "plan" {
   location            = local.location
   name                = local.app_service_plan_name
   resource_group_name = local.resource_group_name
-  kind                = "Linux"
-  sku {
-    tier = "Free"
-    size = "F1"
-  }
+  os_type                 = "linux"
+  sku_name = "Y1"
 }
 
 resource "azurerm_container_registry" "acr" {
+  depends_on = [ azurerm_resource_group.rg ]
   name                = "bswebappcontainer"
   resource_group_name = local.resource_group_name
   location            = local.location
