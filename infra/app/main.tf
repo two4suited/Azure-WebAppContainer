@@ -28,7 +28,7 @@ resource "azurerm_linux_web_app" "bs-webappcontainer" {
   site_config {
     application_stack {
       docker_image_name = "${var.DockerRegistry}/${var.DockerImageName}:${var.DockerImageTag}"
-      docker_registry_url = "https://${data.tfe_outputs.InfrastructureOutput.values.ContainerRegistryId}.azurecr.io"
+      docker_registry_url = "https://${var.DockerRegistry}"
       docker_registry_username = var.DockerUserName
       docker_registry_password = var.DockerPassword
     }
