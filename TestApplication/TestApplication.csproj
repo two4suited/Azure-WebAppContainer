@@ -5,7 +5,7 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <InvariantGlobalization>true</InvariantGlobalization>
-        <ContainerRegistry>bswebappcontainer.azurecr.io</ContainerRegistry>
+        <ContainerPort Include="8080" Type="tcp" />
     </PropertyGroup>
 
     <ItemGroup>
