@@ -13,3 +13,12 @@ terraform {
     }
   }
 }
+
+resource "azurerm_linux_web_app" "bs-webappcontainer" {
+  name                = "bs-webappcontainer"
+  resource_group_name = var.ResourceGroupName
+  location            = var.AzureLocation
+  service_plan_id     = var.AppServicePlanID
+
+  site_config {}
+}
