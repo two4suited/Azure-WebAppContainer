@@ -17,7 +17,7 @@ jobs:
       infra: ${{ steps.changes.outputs.infra }}
       infra_app: ${{ steps.changes.outputs.infra_app }}
     steps:
-    - uses: actions/checkout
+    - uses: actions/checkout@v4
     - uses: dorny/paths-filter@v2
       id: changes
       with:
@@ -34,7 +34,7 @@ jobs:
     needs: [changes]
     if: ${{ needs.changes.outputs.src == 'true' }}
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
@@ -56,7 +56,7 @@ jobs:
             shell: bash
             working-directory: ./infra/azure    
         steps:
-        - uses: actions/checkout@v3  
+        - uses: actions/checkout@v4  
         # Checkout the repository to the GitHub Actions runner
         - name: Checkout
           uses: actions/checkout@v3
@@ -87,14 +87,8 @@ jobs:
             runs-on: ubuntu-latest
             needs: [infrastructure, build, changes]
             if: ${{ needs.changes.outputs.src == 'true' }}
-            steps:
-              - uses: dorny/paths-filter@v2
-                id: src
-                with:
-                  filters: | 
-                    src:
-                        - 'TestApplication/**'
-              - uses: actions/checkout@v3
+            steps:            
+              - uses: actions/checkout@v4
               - name: Setup .NET
                 uses: actions/setup-dotnet@v3
                 with:
@@ -116,17 +110,9 @@ jobs:
                 working-directory: ./infra/app
         
             steps:
-            - uses: dorny/paths-filter@v2
-              id: app_infra
-              with:
-                filters: | 
-                  infra:
-                      - 'infra/app/**'
-                  src:
-                      - 'TestApplication/**'
             # Checkout the repository to the GitHub Actions runner
             - name: Checkout
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
         
             # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
             - name: Setup Terraform
