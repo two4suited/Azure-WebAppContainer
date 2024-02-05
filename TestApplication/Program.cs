@@ -29,6 +29,10 @@ app.MapGet("/version", () => "1.0.0")
     .WithName("GetVersion")
     .WithOpenApi();
 
+app.MapGet("/test", () => "Test")
+    .WithName("Test")
+    .WithOpenApi();
+
 app.MapGet("/weatherforecast", () =>
     {
         var forecast = Enumerable.Range(1, 10).Select(index =>
