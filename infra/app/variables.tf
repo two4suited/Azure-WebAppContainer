@@ -1,6 +1,7 @@
 variable "DockerRegistry" {
   description = "Docker registry"
   type        = string
+  sensitive = true
 }
 
 variable "DockerUserName" {
@@ -11,6 +12,7 @@ variable "DockerUserName" {
 variable "DockerPassword" {
   type = string
   description = "value of the docker password"
+  sensitive = true
 }
 
 variable "DockerImageTag" {
@@ -23,16 +25,3 @@ variable "DockerImageName" {
   description = "value of the docker image name"
 }
 
-variable "AppServicePlanID" {
-  type = string
-  description = "value of the app service plan id"
-}
-
-variable "AzureLocation" {
-  type = string
-    description = "value of the azure location"
-}
-variable "ResourceGroupName" {
-  type=string
-    description="value of the resource group name"
-}

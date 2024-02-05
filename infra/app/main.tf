@@ -14,11 +14,16 @@ terraform {
   }
 }
 
+data "tfe_outputs" "InfrastructureOutput"{
+    organization = "BS_INC"
+    workspace = "TestingAppServicePlanDockerImage-Infrastructure"
+}
+
 resource "azurerm_linux_web_app" "bs-webappcontainer" {
   name                = "bs-webappcontainer"
-  resource_group_name = var.ResourceGroupName
-  location            = var.AzureLocation
-  service_plan_id     = var.AppServicePlanID
+  resource_group_name = data.tfe_outputs.InfrastructureOutput.values.ResourceGroupName
+  location            = data.tfe_outputs.InfrastructureOutput.values.AzureLocation
+  service_plan_id     = data.tfe_outputs.InfrastructureOutput.values.AppServicePlanId
 
   site_config {}
 }
