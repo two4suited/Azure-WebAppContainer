@@ -1,7 +1,6 @@
 variable "DockerRegistry" {
   description = "Docker registry"
-  type        = string
-  sensitive = true
+  type        = string  
 }
 
 variable "DockerUserName" {
