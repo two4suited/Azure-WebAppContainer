@@ -26,7 +26,9 @@ resource "azurerm_linux_web_app" "bs-webappcontainer" {
   service_plan_id     = data.tfe_outputs.InfrastructureOutput.values.AppServicePlanId
 
   site_config {
+    health_check_path = "/health"
     application_stack {
+    
       docker_image_name = "${var.DockerImageName}:${var.DockerImageTag}"
       docker_registry_url = "https://bswebappcontainer.azurecr.io"
       docker_registry_username = var.DockerUserName
