@@ -28,7 +28,14 @@ resource "azurerm_linux_web_app" "bs-webappcontainer" {
     app_settings = {
       WEBSITES_PORT = "8080"
     }
-
+    logs {
+        http_logs {
+        file_system {
+            retention_in_days = 7
+            retention_in_mb = 35      
+        }
+        }
+    }
   site_config {
     health_check_path = "/health"
     application_stack {
