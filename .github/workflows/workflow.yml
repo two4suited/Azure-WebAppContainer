@@ -72,7 +72,9 @@ jobs:
                 with:
                   dotnet-version: 8.0.x
               - name: Login to Docker
-                run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login ${{secrets.DOCKER_REGISTRY}} -u ${{ secrets.DOCKER_USERNAME }} --password ${{ secrets.DOCKER_PASSWORD }}              
+                run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login ${{secrets.DOCKER_REGISTRY}} -u ${{ secrets.DOCKER_USERNAME }} --password ${{ secrets.DOCKER_PASSWORD }}       
+              - name: Publish Docker Image
+                run: dotnet publish -c Release --os linux --arch x64 -p:PublishProfile=DefaultContainer,ContainerRegistry=${{ secrets.DOCKER_REGISTRY }}/azure-webappcontainer:${{ github.sha }}      
   app_infrastructure:
             name: 'Build App Infrastructure'
             runs-on: ubuntu-latest
