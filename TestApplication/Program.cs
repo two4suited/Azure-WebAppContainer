@@ -25,9 +25,13 @@ app.MapGet("/health", () => "Healthy!")
     .WithName("HealthCheck")
     .WithOpenApi();
 
+app.MapGet("/version", () => "1.0.0")
+    .WithName("GetVersion")
+    .WithOpenApi();
+
 app.MapGet("/weatherforecast", () =>
     {
-        var forecast = Enumerable.Range(1, 5).Select(index =>
+        var forecast = Enumerable.Range(1, 10).Select(index =>
                 new WeatherForecast
                 (
                     DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
