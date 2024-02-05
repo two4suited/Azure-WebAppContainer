@@ -31,7 +31,7 @@ resource "azurerm_service_plan" "plan" {
   name                = local.app_service_plan_name
   resource_group_name = local.resource_group_name
   os_type                 = "Linux"
-  sku_name = "Y1"
+  sku_name = "B1"
 }
 
 resource "azurerm_container_registry" "acr" {
