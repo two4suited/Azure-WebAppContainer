@@ -25,6 +25,10 @@ resource "azurerm_linux_web_app" "bs-webappcontainer" {
   location            = data.tfe_outputs.InfrastructureOutput.values.AzureLocation
   service_plan_id     = data.tfe_outputs.InfrastructureOutput.values.AppServicePlanId
 
+    app_settings = {
+      WEBSITES_PORT = "8080"
+    }
+
   site_config {
     health_check_path = "/health"
     application_stack {
