@@ -17,7 +17,7 @@ jobs:
       infra: ${{ steps.changes.outputs.infra }}
       infra_app: ${{ steps.changes.outputs.infra_app }}
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout
     - uses: dorny/paths-filter@v2
       id: changes
       with:
