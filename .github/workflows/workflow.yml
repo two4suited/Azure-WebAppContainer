@@ -72,11 +72,7 @@ jobs:
                 with:
                   dotnet-version: 8.0.x
               - name: Login to Docker
-                run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login ghcr.io -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-              - name: Push Image to Registry
-                run: |
-                  docker build -t ghcr.io/${{ secrets.DOCKER_USERNAME }}/dotnetapp:${{ github.sha }} .
-                  docker push ghcr.io/${{ secrets.DOCKER_USERNAME }}/dotnetapp:${{ github.sha }}
+                run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login ${{secrets.DOCKER_REGISTRY}} -u ${{ secrets.DOCKER_USERNAME }} --password ${{ secrets.DOCKER_PASSWORD }}              
   app_infrastructure:
             name: 'Build App Infrastructure'
             runs-on: ubuntu-latest
